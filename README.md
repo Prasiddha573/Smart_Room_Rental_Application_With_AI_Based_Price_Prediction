@@ -461,6 +461,3 @@ All configuration values are in `smart-room-system/lib/config.dart`:
 
 ---
 
-## License
-
-This project is for educational purposes. Contact the authors for usage permissions.
