@@ -1,0 +1,52 @@
+mutation CreateNewInquiry($propertyId: UUID!, $receiverId: UUID!, $messageContent: String!, $subject: String) @auth(level: USER) {
+  inquiry_insert(data: {
+    propertyId: $propertyId,
+    receiverId: $receiverId,
+    messageContent: $messageContent,
+    subject: $subject,
+    sentAt_expr: "request.time",
+    isRead: false
+  })
+}
+
+query GetPropertiesByCity($city: String!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  properties(where: { city: { eq: $city } }) {
+    id
+    address
+    rentalPrice
+    bedrooms
+    bathrooms
+    squareFootage
+    description
+    amenities
+    images_on_property {
+      imageUrl
+      caption
+    }
+  }
+}
+
+mutation AddNewReview($propertyId: UUID!, $comment: String, $rating: Int!) @auth(level: USER) {
+  review_insert(data: {
+    propertyId: $propertyId,
+    reviewerId_expr: "auth.uid",
+    comment: $comment,
+    rating: $rating,
+    createdAt_expr: "request.time"
+  })
+}
+
+query GetMyInquiries @auth(level: USER) {
+  inquiries(where: { senderId_expr: "auth.uid" }) {
+    id
+    property {
+      id
+      title
+      address
+    }
+    messageContent
+    sentAt
+    isRead
+    subject
+  }
+}

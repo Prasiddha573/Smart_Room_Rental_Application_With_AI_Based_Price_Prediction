@@ -1,0 +1,51 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  userType: String!
+  phoneNumber: String
+  profilePictureUrl: String
+}
+
+type Property @table {
+  title: String!
+  address: String!
+  city: String!
+  state: String!
+  zipCode: String!
+  rentalPrice: Float!
+  createdAt: Timestamp!
+  status: String!
+  description: String
+  bedrooms: Int
+  bathrooms: Float
+  squareFootage: Int
+  amenities: [String]
+  predictedPrice: Float
+  owner: User
+}
+
+type Image @table {
+  imageUrl: String!
+  uploadedAt: Timestamp!
+  caption: String
+  property: Property
+}
+
+type Inquiry @table {
+  messageContent: String!
+  sentAt: Timestamp!
+  isRead: Boolean!
+  subject: String
+  sender: User
+  receiver: User
+  property: Property
+}
+
+type Review @table {
+  rating: Int!
+  createdAt: Timestamp!
+  comment: String
+  property: Property
+  reviewer: User
+}

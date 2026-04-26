@@ -1,0 +1,89 @@
+mutation CreateSeedData @auth(level: PUBLIC, insecureReason: "This operation is only used to seed the database with example data.") @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2024-04-24T00:00:00Z",
+      displayName: "demouser1",
+      email: "demouser1@example.com",
+      userType: "renter"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      createdAt: "2024-04-24T00:00:00Z",
+      displayName: "demouser2",
+      email: "demouser2@example.com",
+      userType: "owner"
+    }
+  ])
+  property_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440002",
+      ownerId: "550e8400-e29b-41d4-a716-446655440001",
+      address: "123 Main St",
+      city: "Anytown",
+      state: "CA",
+      zipCode: "91234",
+      title: "Example Property 1",
+      rentalPrice: 1500.00,
+      createdAt: "2024-04-24T00:00:00Z",
+      status: "available",
+      bedrooms: 2,
+      bathrooms: 1.0
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440003",
+      ownerId: "550e8400-e29b-41d4-a716-446655440001",
+      address: "456 Elm St",
+      city: "Anytown",
+      state: "CA",
+      zipCode: "91234",
+      title: "Example Property 2",
+      rentalPrice: 2000.00,
+      createdAt: "2024-04-24T00:00:00Z",
+      status: "available",
+      bedrooms: 3,
+      bathrooms: 2.0
+    }
+  ])
+  image_insertMany(data: [
+    {
+      propertyId: "550e8400-e29b-41d4-a716-446655440002",
+      imageUrl: "http://example.com/image1.jpg",
+      uploadedAt: "2024-04-24T00:00:00Z",
+      caption: "Living Room"
+    },
+    {
+      propertyId: "550e8400-e29b-41d4-a716-446655440003",
+      imageUrl: "http://example.com/image2.jpg",
+      uploadedAt: "2024-04-24T00:00:00Z",
+      caption: "Kitchen"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      propertyId: "550e8400-e29b-41d4-a716-446655440002",
+      reviewerId: "550e8400-e29b-41d4-a716-446655440000",
+      comment: "Great place!",
+      rating: 5,
+      createdAt: "2024-04-24T00:00:00Z"
+    },
+        {
+      propertyId: "550e8400-e29b-41d4-a716-446655440003",
+      reviewerId: "550e8400-e29b-41d4-a716-446655440000",
+      comment: "Nice!",
+      rating: 4,
+      createdAt: "2024-04-24T00:00:00Z"
+    }
+  ])
+  inquiry_insertMany(data: [
+    {
+      propertyId: "550e8400-e29b-41d4-a716-446655440002",
+      senderId: "550e8400-e29b-41d4-a716-446655440000",
+      receiverId: "550e8400-e29b-41d4-a716-446655440001",
+      messageContent: "I'm interested in this property",
+      sentAt: "2024-04-24T00:00:00Z",
+      isRead: false,
+      subject: "Inquiry about property"
+    }
+  ])
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "704906581956",
+    "project_id": "mdmapp-4793e",
+    "storage_bucket": "mdmapp-4793e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704906581956:android:f61fbdf09b4a7e9e66f691",
+        "android_client_info": {
+          "package_name": "com.example.smart_room"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGq6G6hDzzOoctOdH3h_wPOj4FMw5Buck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
